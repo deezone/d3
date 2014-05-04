@@ -9,24 +9,34 @@
     <script type="text/javascript">
       var svgWidth  = window.innerWidth
        ,  svgHeight = window.innerHeight
-       ,  nodes = d3.range(200).map(function() { return {
+       ,  nodes = d3.range(200).map(function() {
+            return {
                   radius: Math.random() * 12 + 4,
                   cx: Math.random() * svgWidth,
                   cy: Math.random() * svgHeight
-          }
+            }
 
+            // Append each circle in nodes to SVG
+            for (var i = 0; i < nodes.length; i++) {
+              svg.append("circle")
+                .attr("cx", nodes[i].cx)
+                .attr("cy", nodes[i].cy)
+                .attr("r", nodes[i].radius);
+            }
+          });
+
+      // SVG we will draw to
+      var svg = d3.select("body").append("svg")
+        .attr("width", svgWidth)
+        .attr("height", svgHeight);
+        
       // Append each circle in nodes to SVG
       for (var i = 0; i < nodes.length; i++) {
         svg.append("circle")
-         .attr("cx", nodes[i].cx)
-         .attr("cy", nodes[i].cy)
-         .attr("r", nodes[i].radius);
-        }});
-
-        // SVG we will draw to
-        var svg = d3.select("body").append("svg")
-            .attr("width", svgWidth)
-            .attr("height", svgHeight);
+          .attr("cx", nodes[i].cx)
+          .attr("cy", nodes[i].cy)
+          .attr("r", nodes[i].radius);
+      }
     </script>
   </body>
 </html>
