@@ -35,7 +35,10 @@
         svg.append("circle")
           .attr("cx", nodes[i].cx)
           .attr("cy", nodes[i].cy)
-          .attr("r", nodes[i].radius);
+          .attr("r", nodes[i].radius)
+          .attr("fill", function() { return "hsl(" + Math.random() * 360 + ", 100%, 75%)" })
+          .style("stroke", "black")
+          .style("stroke-width", 1);
       }
     </script>
   </body>
